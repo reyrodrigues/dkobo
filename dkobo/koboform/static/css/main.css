@@ -103,6 +103,11 @@ textarea {
     padding-left: 230px;
 }
 
+.top-level-menu.is-active ~ .main .header-bar,
+.top-level-menu.is-active ~ .main .sub-header-bar {
+    left: 230px;
+}
+
 .top-level-menu.is-active ~ .main .header-bar__top-level-menu-button > .fa {
     color: #1daee3;
 }
@@ -174,6 +179,7 @@ textarea {
    ========================================================================== */
 
 .main {
+    margin-top: 60px;
     transition: padding-left 300ms;
 }
 
@@ -188,6 +194,10 @@ textarea {
 
 .content {
     padding: 20px;
+}
+
+.content > .content {
+    padding: 0;
 }
 
 .content--centered {
@@ -280,7 +290,6 @@ textarea {
     -o-user-select: none;
     user-select: none;
     position: relative;
-    box-shadow: 0 2px 0 #1288b6;
 }
 
 .btn:hover,
@@ -291,7 +300,6 @@ textarea {
 
 .btn:active,
 .btn.is-active {
-    top: 2px;
     outline: 0;
     background-image: none;
     box-shadow: none;
@@ -344,6 +352,46 @@ input[type="button"].btn--block {
     margin-bottom: 20px;
 }
 
+.btn--utility {
+    border: 1px solid #ddd;
+    color: #222;
+    background-color: transparent;
+}
+
+.btn--utility:hover,
+.btn--utility:focus {
+    background-color: #e2e2e2;
+}
+
+
+
+
+
+
+/* ==========================================================================
+   Wells
+   ========================================================================== */
+
+.well {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px 14px;
+    background-color: #eee;
+}
+
+
+
+
+
+
+/* ==========================================================================
+   Editable
+   ========================================================================== */
+
+.editable {
+    cursor: pointer;
+}
+
 
 
 
@@ -354,11 +402,17 @@ input[type="button"].btn--block {
    ========================================================================== */
 
 .header-bar {
+    width: 100%;
     height: 60px;
     padding-right: 10px;
     padding-left: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
     line-height: 60px;
     background-color: #666;
+    transition: left 300ms;
 }
 
 .header-bar__page-icon-stack {

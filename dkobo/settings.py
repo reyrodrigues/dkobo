@@ -61,6 +61,8 @@ COMPRESS_ENABLED = (not DEBUG)
 COMPRESS_PRECOMPILERS = (
     ('text/coffeescript', 'coffee --compile --stdio'),
     ('text/less', 'lessc {infile} {outfile}'),
+    ('text/x-sass', 'sass {infile} {outfile}'),
+    ('text/x-scss', 'sass --scss {infile} {outfile}'),
 )
 
 INSTALLED_APPS = (
@@ -75,6 +77,7 @@ INSTALLED_APPS = (
     'dkobo.koboform',
     'compressor',
     'gunicorn',
+    'rest_framework'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -150,7 +153,7 @@ LOGGING = {
             'level': 'DEBUG',
             'class': 'django.utils.log.NullHandler',
         },
-        'console':{
+        'console': {
             'level': 'DEBUG',
             'class': 'logging.StreamHandler',
             'formatter': 'simple'
@@ -173,4 +176,23 @@ LOGGING = {
             'propagate': False,
         },
     }
+}
+
+# Djangular
+
+APPEND_SLASH = False
+
+# -------------------------------------------
+
+REST_FRAMEWORK = {
+    # Use hyperlinked styles by default.
+    # Only used if the `serializer_class` attribute is not set on a view.
+    'DEFAULT_MODEL_SERIALIZER_CLASS':
+        'rest_framework.serializers.HyperlinkedModelSerializer',
+
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
 }
